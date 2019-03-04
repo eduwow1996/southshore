@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2019 at 05:02 PM
+-- Generation Time: Mar 04, 2019 at 05:13 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -40,7 +40,9 @@ CREATE TABLE `tbl_audit` (
 --
 
 INSERT INTO `tbl_audit` (`audit_id`, `content`, `date_generated`, `user_id`) VALUES
-(2, 'Administrator has logged in', '2019-03-04 05:03:20', 3);
+(2, 'Administrator has logged in', '2019-03-04 05:03:20', 3),
+(3, 'Administrator has logged in', '2019-03-04 05:03:06', 3),
+(4, 'Administrator has logged in', '2019-03-05 12:03:20', 3);
 
 -- --------------------------------------------------------
 
@@ -129,7 +131,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_audit`
 --
 ALTER TABLE `tbl_audit`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_package`

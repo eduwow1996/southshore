@@ -11,7 +11,7 @@ class MY_Model extends CI_Model {
         return $query->row();
     }
 
-    public function getRows($table,$select="*",$where=array(),$join=array(),$order_by = "",$result = 'array'){
+    public function getRows($table,$select="*",$where=array(),$join=array(),$order_by = "",$limit = 0,$result = 'array'){
         $this->db->select($select);
 
         if(!empty($where))
@@ -25,20 +25,23 @@ class MY_Model extends CI_Model {
         if(!empty($order_by))
             $this->db->order_by($order_by);
 
+        if(!empty($limit))
+            $this->db->limit($limit);
+
         $query = $this->db->get($table);
 
         switch ($result) {
             case 'array':
-                return $result->result_array();
+                return $query->result_array();
                 break;
             case 'row':
-                return $result->row();
+                return $query->row();
                 break;
             case 'count':
-                return $result->num_rows();
+                return $query->num_rows();
                 break;
             default:
-                return $result->result_array();
+                return $query->result_array();
                 break;
         }
     }
