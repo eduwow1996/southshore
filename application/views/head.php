@@ -16,7 +16,7 @@
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
-                <a href="index2.html" class="logo">
+                <a href="<?php echo base_url(); ?>" class="logo">
                     <span class="logo-mini">SSC</span>
                     <span class="logo-lg">South Shore</span>
                 </a>
@@ -29,19 +29,19 @@
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="<?php echo base_url('static/img/avatar5.png'); ?>" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Administrator</span>
+                                    <span class="hidden-xs"><?php echo $this->session->userdata('full_name'); ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="user-header">
                                         <img src="<?php echo base_url('static/img/avatar5.png'); ?>" class="img-circle" alt="User Image">
-                                        <p>Administrator</p>
+                                        <p><?php echo $this->session->userdata('full_name'); ?></p>
                                     </li>
                                     <li class="user-footer">
                                         <div class="pull-left">
                                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="<?php echo base_url('logout'); ?>" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -57,7 +57,7 @@
                             <img src="<?php echo base_url('static/img/avatar5.png'); ?>" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p>Administrator</p>
+                            <p><?php echo $this->session->userdata('full_name'); ?></p>
                         </div>
                     </div>
                     <ul class="sidebar-menu" data-widget="tree">
@@ -68,7 +68,8 @@
                         <li <?php echo ($current == 'customers') ? 'class="active"' : ''?>><a href="<?php echo base_url('customers'); ?>"><i class="fa fa-users"></i> <span>Customers</span></a></li>
                         <li <?php echo ($current == 'sites') ? 'class="active"' : ''?>><a href="<?php echo base_url('sites'); ?>"><i class="fa fa-globe"></i> <span>Sites</span></a></li>
                         <li <?php echo ($current == 'packages') ? 'class="active"' : ''?>><a href="<?php echo base_url('packages'); ?>"><i class="fa fa-cubes"></i> <span>Packages</span></a></li>
-                        <li <?php echo ($current == 'reservations') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservations'); ?>"><i class="fa fa-book"></i> <span>Reservations</span></a></li>
+                        <li <?php echo ($current == 'reservations') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservations'); ?>"><i class="fa fa-calendar"></i> <span>Reservations</span><span class="pull-right-container"><small class="label pull-right bg-green">16</small></span></a></li>
+                        <li <?php echo ($current == 'audit') ? 'class="active"' : ''?>><a href="<?php echo base_url('audit'); ?>"><i class="fa fa-search"></i> <span>Log Audit</span></a></li>
                     </ul>
                 </section>
             </aside>

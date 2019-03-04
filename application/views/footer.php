@@ -11,6 +11,7 @@
         <script src="<?php echo base_url('static/js/bootstrap.min.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/adminlte.min.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/ckeditor.js'); ?>"></script>
+        <script src="<?php echo base_url('static/js/script.js'); ?>"></script>
         <script>
              $('.textarea_inclusions').wysihtml5();
         </script>

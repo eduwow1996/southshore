@@ -12,18 +12,30 @@
                     <table class="table table-stripe">
                         <thead>
                             <th>Package Name</th>
+                            <th>Status</th>
+                            <th>Added Date</th>
+                            <th>Added By</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
                                 <td>1</td>
                                 <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
                                 <td>1</td>
                                 <td>1</td>
                             </tr>
@@ -52,12 +64,39 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label>Package Name: </label>
-                                <textarea class="textarea_inclusions" name="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
+                                <label>Inclusions: </label>
+                                <textarea class="textarea_inclusions" name="Inclusions" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px;" placeholder="Inclusions"></textarea>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Complementary: </label>
+                                <textarea class="form-control" name="Completementary" placeholder="Complementary"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Intinerary: </label>
+                                <textarea class="textarea_inclusions" name="Intinerary" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px;" placeholder="Intinerary"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Number of persons: </label>
+                                <input type="text" class="form-control" name="number_of_person" placeholder="Number of Person"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="number_of_person_list">
+
                     </div>
                 </div>
                 <div class="modal-footer">
