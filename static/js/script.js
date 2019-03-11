@@ -30,4 +30,18 @@ $(document).ready(function(){
             }
         });
     });
+    $(document).on('submit','#customer_form',function(e){
+        e.preventDefault();
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: $(this).attr('action'),
+            data: formData,
+            type: $(this).attr('method'),
+            contentType: false,
+            processData: false,
+            success:function(data){
+                window.location.href=base_url+"customers";
+            }
+        });
+    });
 });

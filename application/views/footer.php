@@ -10,11 +10,19 @@
         <input type="hidden" class="base_url" value="<?php echo base_url(); ?>"/>
         <script src="<?php echo base_url('static/js/jquery.min.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('static/js/datepicker.min.js'); ?>"></script>
+        <script src="<?php echo base_url('static/js/select2.min.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/adminlte.min.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/ckeditor.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/script.js'); ?>"></script>
         <script>
-             $('.textarea_inclusions').wysihtml5();
+            $('.textarea_inclusions').wysihtml5();
+            $('.select2').select2();
+            $('.datepicker_field').datepicker({
+                autoclose: true,
+                startDate: new Date(),
+                format:'yyyy-mm-dd'
+            });
         </script>
     </body>
 </html>

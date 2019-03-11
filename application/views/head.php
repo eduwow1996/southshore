@@ -6,6 +6,8 @@
         <title>South Shore Cebu</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="<?php echo base_url('static/css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('static/css/datepicker.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('static/css/select2.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('static/css/font-awesome.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('static/css/ionicons.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('static/css/AdminLTE.min.css'); ?>">
@@ -65,8 +67,6 @@
                         <li class="header">MAIN HEADER</li>
                         <li <?php echo ($current == 'dashboard') ? 'class="active"' : ''?>><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                         <li <?php echo ($current == 'users') ? 'class="active"' : ''?>><a href="<?php echo base_url('users'); ?>"><i class="fa fa-users"></i> <span>Users</span></a></li>
-                        <li <?php echo ($current == 'customers') ? 'class="active"' : ''?>><a href="<?php echo base_url('customers'); ?>"><i class="fa fa-users"></i> <span>Customers</span></a></li>
-                        <li <?php echo ($current == 'sites') ? 'class="active"' : ''?>><a href="<?php echo base_url('sites'); ?>"><i class="fa fa-globe"></i> <span>Sites</span></a></li>
                         <li <?php echo ($current == 'packages') ? 'class="active"' : ''?>><a href="<?php echo base_url('packages'); ?>"><i class="fa fa-cubes"></i> <span>Packages</span></a></li>
                         <li <?php echo ($current == 'reservations') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservations'); ?>"><i class="fa fa-calendar"></i> <span>Reservations</span><span class="pull-right-container"><small class="label pull-right bg-green">16</small></span></a></li>
                         <li <?php echo ($current == 'audit') ? 'class="active"' : ''?>><a href="<?php echo base_url('audit'); ?>"><i class="fa fa-search"></i> <span>Log Audit</span></a></li>
