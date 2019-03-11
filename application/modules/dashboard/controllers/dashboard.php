@@ -12,4 +12,5 @@ class Dashboard extends MY_Controller {
 		$this->session->unset_userdata($data_session);
 		redirect(base_url('login'));
 	}
+
 }
