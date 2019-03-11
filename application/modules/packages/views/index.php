@@ -13,32 +13,23 @@
                         <thead>
                             <th>Package Name</th>
                             <th>Status</th>
-                            <th>Added Date</th>
                             <th>Added By</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
+                            <?php foreach($packages as $key => $value): ?>
+                                <tr>
+                                    <td><?php echo $value['package_name']; ?></td>
+                                    <td><?php echo ($value['status'] == 1) ? 'Active' : 'Inactive'; ?></td>
+                                    <td><?php echo $value['fullname']; ?></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                            <a href="" class="btn btn-danger btn-sm"><i class="fa fa-lock"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -49,7 +40,7 @@
 <div class="modal fade" id="createPackageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form>
+            <form id="package_form" action="<?php echo base_url('packages/save_packages'); ?>" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Create package</h4>
@@ -75,7 +66,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Complementary: </label>
-                                <textarea class="form-control" name="Completementary" placeholder="Complementary"></textarea>
+                                <textarea class="form-control" name="Complementary" placeholder="Complementary"></textarea>
                             </div>
                         </div>
                     </div>
@@ -101,7 +92,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
                 </div>
             </form>
         </div>

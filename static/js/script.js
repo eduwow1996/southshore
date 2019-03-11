@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var base_url = $('.base_url').val();
     $(document).on('keyup','input[name="number_of_person"]',function(){
         var number_of_person = $(this).val();
         var str = '';
@@ -14,5 +15,19 @@ $(document).ready(function(){
             str += '</div>';
         }
         $('.number_of_person_list').html(str);
+    });
+    $(document).on('submit','#package_form',function(e){
+        e.preventDefault();
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: $(this).attr('action'),
+            data: formData,
+            type: $(this).attr('method'),
+            contentType: false,
+            processData: false,
+            success:function(data){
+                window.location.href=base_url+"packages";
+            }
+        });
     });
 });
