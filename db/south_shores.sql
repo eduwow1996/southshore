@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2019 at 06:51 AM
+-- Generation Time: Mar 24, 2019 at 07:50 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -85,6 +85,7 @@ INSERT INTO `tbl_package` (`package_id`, `package_name`, `package_inclusions`, `
 CREATE TABLE `tbl_reservation` (
   `id` int(11) NOT NULL,
   `transaction_id` varchar(255) NOT NULL,
+  `trans_date` varchar(100) NOT NULL,
   `package_id` int(11) NOT NULL,
   `paid_amount` varchar(100) NOT NULL,
   `lead_guest_name` varchar(255) NOT NULL,
@@ -96,15 +97,17 @@ CREATE TABLE `tbl_reservation` (
   `phone_number` varchar(255) NOT NULL,
   `special_request` text NOT NULL,
   `payment_type` int(11) NOT NULL,
-  `payment_gateway` varchar(255) NOT NULL
+  `payment_gateway` varchar(255) NOT NULL,
+  `payment_status` int(11) DEFAULT '0',
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_reservation`
 --
 
-INSERT INTO `tbl_reservation` (`id`, `transaction_id`, `package_id`, `paid_amount`, `lead_guest_name`, `number_of_people`, `number_of_filipino`, `pickup_address`, `tour_date`, `email_address`, `phone_number`, `special_request`, `payment_type`, `payment_gateway`) VALUES
-(3, 'TT5C97191770A95', 3, '13912.50', 'Test Test', 10, 0, 'Test', '03/24/2019', 'test@gmail.com', '09933', 'test', 1, 'paypal');
+INSERT INTO `tbl_reservation` (`id`, `transaction_id`, `trans_date`, `package_id`, `paid_amount`, `lead_guest_name`, `number_of_people`, `number_of_filipino`, `pickup_address`, `tour_date`, `email_address`, `phone_number`, `special_request`, `payment_type`, `payment_gateway`, `payment_status`, `status`) VALUES
+(3, 'TT5C97191770A95', '2019/03/24', 3, '13912.50', 'Test Test', 10, 0, 'Test', '03/24/2019', 'test@gmail.com', '09933', 'test', 1, 'paypal', 0, 0);
 
 -- --------------------------------------------------------
 

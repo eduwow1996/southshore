@@ -15,6 +15,7 @@
                             <th>Status</th>
                             <th>Added By</th>
                             <th>Action</th>
+                            <th>Edit Price</th>
                         </thead>
                         <tbody>
                             <?php foreach($packages as $key => $value): ?>
@@ -26,6 +27,11 @@
                                         <div class="btn-group">
                                             <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                             <a href="" class="btn btn-danger btn-sm"><i class="fa fa-lock"></i></a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="" class="btn btn-warning btn-sm editPackagePrice" data-id="<?php echo $value['package_id']; ?>" data-toggle="modal" data-target="#editPackagePriceModal"><i class="fa fa-edit"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -105,6 +111,26 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editPackagePriceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="edit_price_package_form" action="<?php echo base_url('packages/edit_price_packages'); ?>" method="post">
+                <input type='hidden' name="trans_type" />
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Edit package price</h4>
+                </div>
+                <div class="modal-body" id="price_div">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Save Changes</button>
                 </div>
             </form>
         </div>

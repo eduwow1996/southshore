@@ -44,4 +44,58 @@ $(document).ready(function(){
             }
         });
     });
+    $(document).on('submit','#edit_price_package_form',function(e){
+        e.preventDefault();
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: $(this).attr('action'),
+            data: formData,
+            type: $(this).attr('method'),
+            contentType: false,
+            processData: false,
+            success:function(data){
+                window.location.href=base_url+"packages";
+            }
+        });
+    });
+    $(document).on('click','.editPackagePrice',function(){
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url:base_url+"packages/get_package_price",
+            type:"post",
+            data:{
+                'id':id
+            },success:function(data){
+                var obj = $.parseJSON(data);
+                var str = '';
+                var str_price = '';
+                if(obj.packages_price.length > 0){
+                    $('input[name="trans_type"]').val(1);
+                    $.each(obj.packages_price,function(a,b){
+                        str_price += '<div class="row">';
+                            str_price += '<div class="col-md-7">';
+                                str_price += '<div class="form-group">';
+                                    str_price += '<label>Price Per head minimum '+b.per_person+'</label>';
+                                    str_price += '<input type="text" name="package_price['+b.id+']" class="form-control" value="'+b.price+'" />';
+                                str_price += '</div>';
+                            str_price += '</div>';
+                        str_price += '</div>';
+                    });
+                } else {
+                    $('input[name="trans_type"]').val(0);
+                    for(var i = 1; i <= 15; i++){
+                        str_price += '<div class="row">';
+                            str_price += '<div class="col-md-7">';
+                                str_price += '<div class="form-group">';
+                                    str_price += '<label>Price Per head minimum '+i+'</label>';
+                                    str_price += '<input type="text" name="package_price['+i+']" class="form-control" value="" />';
+                                str_price += '</div>';
+                            str_price += '</div>';
+                        str_price += '</div>';
+                    }
+                }
+                $('#price_div').html(str_price);
+            }
+        });
+    });
 });

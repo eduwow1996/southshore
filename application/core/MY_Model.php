@@ -51,4 +51,10 @@ class MY_Model extends CI_Model {
         return $this->db->insert_id();
     }
 
+    public function update($table,$data = array(),$where = array()){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+        return true;
+    }
+
 }

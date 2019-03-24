@@ -12,6 +12,7 @@ class MY_Controller extends MX_Controller {
 	}
 
 	public function load_page($page,$data = array()){
+		$data['reservations_count'] = $this->MY_Model->getRows('tbl_reservation','*','','','','','count');
 		$this->load->view('head',$data);
 		$this->load->view($page,$data);
 		$this->load->view('footer',$data);
