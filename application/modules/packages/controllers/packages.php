@@ -16,6 +16,7 @@ class Packages extends MY_Controller {
 			'package_inclusions'	 => $this->input->post('Inclusions'),
 			'package_complementary'	 => $this->input->post('Complementary'),
 			'package_intinerary' 	 => $this->input->post('Intinerary'),
+			'excess_payment' 	 => $this->input->post('excess_payment'),
 			'status' => 1,
 			'added_by' => $this->session->userdata('user_id'),
 		);

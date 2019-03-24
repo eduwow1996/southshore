@@ -81,6 +81,18 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
+                                <label>Additional 500 Per Foreigner?: </label>
+                                <select class="form-control" name="excess_payment">
+                                    <option selected hidden>Select Option</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
                                 <label>Number of persons: </label>
                                 <input type="text" class="form-control" name="number_of_person" placeholder="Number of Person"/>
                             </div>
