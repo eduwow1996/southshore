@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2019 at 07:50 AM
+-- Generation Time: Mar 24, 2019 at 09:46 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -48,7 +48,9 @@ INSERT INTO `tbl_audit` (`audit_id`, `content`, `date_generated`, `user_id`) VAL
 (7, 'Administrator added PESCADOR ISLAND-MOALBOAL HOPPING PACKAGE package', '2019-03-11 11:03:56', 3),
 (8, 'Administrator has logged in', '2019-03-24 12:03:25', 3),
 (9, ' added Test package', '2019-03-24 12:03:01', 3),
-(10, 'Administrator has logged in', '2019-03-24 01:03:49', 3);
+(10, 'Administrator has logged in', '2019-03-24 01:03:49', 3),
+(11, ' added Test package', '2019-03-24 02:03:20', 3),
+(12, ' added test package', '2019-03-24 03:03:02', 3);
 
 -- --------------------------------------------------------
 
@@ -74,7 +76,8 @@ CREATE TABLE `tbl_package` (
 INSERT INTO `tbl_package` (`package_id`, `package_name`, `package_inclusions`, `package_complementary`, `package_intinerary`, `excess_payment`, `status`, `added_by`) VALUES
 (3, 'WHALE SHARKS SWIMMING + TUMALOG FALLS', '<p>\r\n\r\nPrivate Tour<br>Private Air-conditioned Vehicle<br>Local driver guide<br>Site Facilitator<br>Venue Entrance Fee<br>Lunch w/ drinks<br>Light Breakfast in Oslob<br>Fees for Whale sharks swimming<br>Boat ride, complete swimming gear, life vest and snorkel.<br>Boatman/guide to Whaleshark<br>Pick-Up/Drop-Off to your Hotel\r\n\r\n<br></p>', 'Bath Towel\r\nBottled Water', '<p>\r\n\r\n04:00am-Pick up in your Hotel<br>07:00am- Breakfast in Oslob<br>07:30am-Whaleshark Swimming<br>11:00am- Cool Down at Tumalog Falls<br>11:30PM- Lunch<br>01:30pm- Wash-Up<br>02:00pm- Travel back to Cebu City<br>03:30pm- Arrived and Drop you off in your Hotel in Cebu or Mactan.<br>This is just an estimated time.\r\n\r\n<br></p>', 1, 1, 3),
 (4, 'CANYONEERING ACTIVITIES + KAWASAN FALLS PACKAGE', '<p>\r\n\r\nPrivate Tour<br>Private Air-conditioned vehicle<br>With Driver Guide<br>With Canyoneering Fee<br>Lunch w/ drinks<br>With Kawasan Entrance Fee<br>Motorbike Ride Fee<br>With Complete Safety Gear (helmet, life vest, rubber shoes and etc.)<br>With professional Canyoneering Guide<br>Pick-Up/Drop-Off to your Hotel\r\n\r\n<br></p>', 'Bath Towel\r\nDistilled Bottled Water', '<p>\r\n\r\n06:00am-Pick up in your Hotel (Mactan or Cebu City)<br>08:00am- Canyoneering Registration and Safety Orientation/Change safety gear<br>08:30am- Motorbike ride going to Starting Point<br>09:45am-Canyoneering Activities<br>12:30pm- Kawasan Falls Swimming<br>01:00Pm Lunch<br>02:00pm-Wash Up<br>02:30pm-Travel back to Cebu City<br>04:00-Arrived &amp; drop off in your hotel in Cebu City<br>This is just an estimated time\r\n\r\n<br></p>', 0, 1, 3),
-(5, 'PESCADOR ISLAND-MOALBOAL HOPPING PACKAGE', '<p>\r\n\r\nPrivate Tour<br>Private Air condition Vehicle<br>Local driver Guide<br>Lunch w/ drinks<br>Pescador Island Tourism Fee<br>Private Boat<br>Guide men, snorkel and lifevest<br>Pescador Island<br>Turtle Hunting<br>Million Sardines Run<br>Dolphin Watching (Weather dependent)<br>Pick-Up/Drop-Off to your Hotel\r\n\r\n<br></p>', 'Distilled bottled water\r\nBath Towel', '<p>\r\n\r\n06:00am-Pick up in your Hotel<br>08:30am- Arrive in Moalboal Tourism Office<br>09:00am- Pescador Island<br>10:00am- Turtle Hunting<br>11:00am- Million Sardines<br>12:30pm- Back to Basdiot Wharf/ Wash up<br>01:00m- Lunch<br>02:20pm-Travel back to Cebu City<br>04:30-Arrived in your hotel at Cebu City<br>This is just an estimated.\r\n\r\n<br></p>', 1, 1, 3);
+(5, 'PESCADOR ISLAND-MOALBOAL HOPPING PACKAGE', '<p>\r\n\r\nPrivate Tour<br>Private Air condition Vehicle<br>Local driver Guide<br>Lunch w/ drinks<br>Pescador Island Tourism Fee<br>Private Boat<br>Guide men, snorkel and lifevest<br>Pescador Island<br>Turtle Hunting<br>Million Sardines Run<br>Dolphin Watching (Weather dependent)<br>Pick-Up/Drop-Off to your Hotel\r\n\r\n<br></p>', 'Distilled bottled water\r\nBath Towel', '<p>\r\n\r\n06:00am-Pick up in your Hotel<br>08:30am- Arrive in Moalboal Tourism Office<br>09:00am- Pescador Island<br>10:00am- Turtle Hunting<br>11:00am- Million Sardines<br>12:30pm- Back to Basdiot Wharf/ Wash up<br>01:00m- Lunch<br>02:20pm-Travel back to Cebu City<br>04:30-Arrived in your hotel at Cebu City<br>This is just an estimated.\r\n\r\n<br></p>', 1, 1, 3),
+(8, 'test', '<p>test<br></p>', 'test', '<p>test<br></p>', 1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -102,13 +105,6 @@ CREATE TABLE `tbl_reservation` (
   `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbl_reservation`
---
-
-INSERT INTO `tbl_reservation` (`id`, `transaction_id`, `trans_date`, `package_id`, `paid_amount`, `lead_guest_name`, `number_of_people`, `number_of_filipino`, `pickup_address`, `tour_date`, `email_address`, `phone_number`, `special_request`, `payment_type`, `payment_gateway`, `payment_status`, `status`) VALUES
-(3, 'TT5C97191770A95', '2019/03/24', 3, '13912.50', 'Test Test', 10, 0, 'Test', '03/24/2019', 'test@gmail.com', '09933', 'test', 1, 'paypal', 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -118,7 +114,7 @@ INSERT INTO `tbl_reservation` (`id`, `transaction_id`, `trans_date`, `package_id
 CREATE TABLE `tbl_sub_package` (
   `id` int(11) NOT NULL,
   `fk_package_id` int(11) NOT NULL,
-  `price` varchar(255) NOT NULL,
+  `price` varchar(255) DEFAULT '0',
   `per_person` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -171,7 +167,9 @@ INSERT INTO `tbl_sub_package` (`id`, `fk_package_id`, `price`, `per_person`) VAL
 (45, 5, '1,550', 12),
 (46, 5, '1,450', 13),
 (47, 5, '1,390', 14),
-(48, 5, '1,300', 15);
+(48, 5, '1,300', 15),
+(80, 8, '123234', 1),
+(81, 8, '123231231', 2);
 
 -- --------------------------------------------------------
 
@@ -237,13 +235,13 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_audit`
 --
 ALTER TABLE `tbl_audit`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_package`
 --
 ALTER TABLE `tbl_package`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_reservation`
@@ -255,7 +253,7 @@ ALTER TABLE `tbl_reservation`
 -- AUTO_INCREMENT for table `tbl_sub_package`
 --
 ALTER TABLE `tbl_sub_package`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

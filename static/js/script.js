@@ -83,6 +83,7 @@ $(document).ready(function(){
                     });
                 } else {
                     $('input[name="trans_type"]').val(0);
+                    $('input[name="package_id_edit"]').val(id);
                     for(var i = 1; i <= 15; i++){
                         str_price += '<div class="row">';
                             str_price += '<div class="col-md-7">';

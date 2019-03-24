@@ -121,6 +121,7 @@
         <div class="modal-content">
             <form id="edit_price_package_form" action="<?php echo base_url('packages/edit_price_packages'); ?>" method="post">
                 <input type='hidden' name="trans_type" />
+                <input type='hidden' name="package_id_edit" />
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Edit package price</h4>

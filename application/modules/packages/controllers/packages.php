@@ -39,7 +39,7 @@ class Packages extends MY_Controller {
 		foreach($this->input->post('price_per_person') as $key => $value){
 			$data_sub_package = array(
 				'fk_package_id'	 	=> $return_id,
-				'price' 			=> $value,
+				'price' 			=> str_replace(",","",$value),
 				'per_person' 		=> $key + 1
 			);
 			$this->MY_Model->insert('tbl_sub_package',$data_sub_package);
@@ -53,7 +53,7 @@ class Packages extends MY_Controller {
 			}
 		} else {
 			foreach($_POST['package_price'] as $key => $value){
-				$this->MY_Model->insert('tbl_sub_package',array('per_person' => $key,'price' => $value));
+				$this->MY_Model->insert('tbl_sub_package',array('per_person' => $key,'price' => $value,'fk_package_id' => $this->input->post('package_id_edit')));
 			}
 		}
 	}
