@@ -66,12 +66,16 @@
                         <?php $current = $this->router->fetch_class(); ?>
                         <li class="header">MAIN HEADER</li>
                         <li <?php echo ($current == 'dashboard') ? 'class="active"' : ''?>><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                        <li <?php echo ($current == 'users') ? 'class="active"' : ''?>><a href="<?php echo base_url('users'); ?>"><i class="fa fa-users"></i> <span>Users</span></a></li>
-                        <li <?php echo ($current == 'packages') ? 'class="active"' : ''?>><a href="<?php echo base_url('packages'); ?>"><i class="fa fa-cubes"></i> <span>Packages</span></a></li>
-                        <li <?php echo ($current == 'paymenttype') ? 'class="active"' : ''?>><a href="<?php echo base_url('paymenttype'); ?>"><i class="fa fa-credit-card"></i> <span>Payment Type</span></a></li>
+                        <?php if($this->session->userdata('user_type') == 0): ?>
+                            <li <?php echo ($current == 'users') ? 'class="active"' : ''?>><a href="<?php echo base_url('users'); ?>"><i class="fa fa-users"></i> <span>Users</span></a></li>
+                            <li <?php echo ($current == 'packages') ? 'class="active"' : ''?>><a href="<?php echo base_url('packages'); ?>"><i class="fa fa-cubes"></i> <span>Packages</span></a></li>
+                            <li <?php echo ($current == 'paymenttype') ? 'class="active"' : ''?>><a href="<?php echo base_url('paymenttype'); ?>"><i class="fa fa-credit-card"></i> <span>Payment Type</span></a></li>
+                        <?php endif; ?>
                         <li <?php echo ($current == 'reservations') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservations'); ?>"><i class="fa fa-calendar"></i> <span>Reservations</span><span class="pull-right-container"><small class="label pull-right bg-red"><?php echo $reservations_count; ?></small></span></a></li>
                         <li <?php echo ($current == 'reservationslogs') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservationslogs'); ?>"><i class="fa fa-book"></i> <span>Reservations Logs</span><span class="pull-right-container"><small class="label pull-right bg-green"><?php echo $reservations_logs_count; ?></small></span></a></li>
-                        <li <?php echo ($current == 'audit') ? 'class="active"' : ''?>><a href="<?php echo base_url('audit'); ?>"><i class="fa fa-search"></i> <span>Log Audit</span></a></li>
+                        <?php if($this->session->userdata('user_type') == 0): ?>
+                            <li <?php echo ($current == 'audit') ? 'class="active"' : ''?>><a href="<?php echo base_url('audit'); ?>"><i class="fa fa-search"></i> <span>Log Audit</span></a></li>
+                        <?php endif; ?>
                     </ul>
                 </section>
             </aside>
