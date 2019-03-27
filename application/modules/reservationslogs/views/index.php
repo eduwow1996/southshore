@@ -27,7 +27,7 @@
                                     <td>P<?php echo $value['balance']; ?></td>
                                     <td><?php echo $value['tour_date']; ?></td>
                                     <td>
-                                        <a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#moreDetails"><i class="fa fa-search"></i> More Details</a>                                    
+                                        <a href="" class="btn btn-info btn-sm getReservationDetails" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#moreDetails"><i class="fa fa-search"></i> More Details</a>
                                         <a href="" class="btn btn-default btn-sm"><i class="fa fa-ticket"></i> Invoice</a>
                                     </td>
                                 </tr>
@@ -47,7 +47,40 @@
                 <h4 class="modal-title" id="myModalLabel">Reservation Details</h4>
             </div>
             <div class="modal-body">
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <tr>
+                                <td>Package:</td>
+                                <td class="package_text_display"></td>
+                            </tr>
+                            <tr>
+                                <td>Number of People:</td>
+                                <td class="number_of_people_text_display"></td>
+                            </tr>
+                            <tr>
+                                <td>Number of Filipino:</td>
+                                <td class="number_of_filipino_text_display"></td>
+                            </tr>
+                            <tr>
+                                <td>Pickup Address:</td>
+                                <td class="pickup_address_text_display"></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td class="email_text_display"></td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number:</td>
+                                <td class="phone_number_text_display"></td>
+                            </tr>
+                            <tr>
+                                <td>Special Request:</td>
+                                <td class="special_request_text_display"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>

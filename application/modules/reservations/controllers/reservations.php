@@ -10,7 +10,7 @@ class Reservations extends MY_Controller {
 
 	public function get_reservation_details(){
 		$id = $this->input->post('id');
-		$data = $this->MY_Model->getRows('tbl_reservation','tbl_reservation.*,tbl_package.package_name','',array('tbl_package' => 'tbl_package.package_id = tbl_reservation.package_id'),'','','row');
+		$data = $this->MY_Model->getRows('tbl_reservation','tbl_reservation.*,tbl_package.package_name',array('tbl_reservation.id' => $id),array('tbl_package' => 'tbl_package.package_id = tbl_reservation.package_id'),'','','row');
 		echo json_encode($data);
 	}
 }
