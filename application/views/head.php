@@ -68,13 +68,21 @@
                         <li <?php echo ($current == 'dashboard') ? 'class="active"' : ''?>><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                         <li <?php echo ($current == 'users') ? 'class="active"' : ''?>><a href="<?php echo base_url('users'); ?>"><i class="fa fa-users"></i> <span>Users</span></a></li>
                         <li <?php echo ($current == 'packages') ? 'class="active"' : ''?>><a href="<?php echo base_url('packages'); ?>"><i class="fa fa-cubes"></i> <span>Packages</span></a></li>
-                        <li <?php echo ($current == 'reservations') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservations'); ?>"><i class="fa fa-calendar"></i> <span>Reservations</span><span class="pull-right-container"><small class="label pull-right bg-green"><?php echo $reservations_count; ?></small></span></a></li>
+                        <li <?php echo ($current == 'paymenttype') ? 'class="active"' : ''?>><a href="<?php echo base_url('paymenttype'); ?>"><i class="fa fa-credit-card"></i> <span>Payment Type</span></a></li>
+                        <li <?php echo ($current == 'reservations') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservations'); ?>"><i class="fa fa-calendar"></i> <span>Reservations</span><span class="pull-right-container"><small class="label pull-right bg-red"><?php echo $reservations_count; ?></small></span></a></li>
+                        <li <?php echo ($current == 'reservationslogs') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservationslogs'); ?>"><i class="fa fa-book"></i> <span>Reservations Logs</span><span class="pull-right-container"><small class="label pull-right bg-green"><?php echo $reservations_logs_count; ?></small></span></a></li>
                         <li <?php echo ($current == 'audit') ? 'class="active"' : ''?>><a href="<?php echo base_url('audit'); ?>"><i class="fa fa-search"></i> <span>Log Audit</span></a></li>
                     </ul>
                 </section>
             </aside>
             <div class="content-wrapper">
                 <section class="content-header">
-                    <h1><?php echo ucwords(str_replace("_"," ",$this->router->fetch_class())); ?></h1>
+                    <?php if($this->router->fetch_class() == 'reservationslogs') { ?>
+                        <h1>Reservations Logs</h1>
+                    <?php } elseif($this->router->fetch_class() == 'paymenttype') { ?>
+                        <h1>Payment Type</h1>
+                    <?php } else { ?>
+                        <h1><?php echo ucwords(str_replace("_"," ",$this->router->fetch_class())); ?></h1>
+                    <?php } ?>
                 </section>
                 <section class="content container-fluid">
