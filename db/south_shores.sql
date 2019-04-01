@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2019 at 03:54 PM
+-- Generation Time: Apr 01, 2019 at 05:49 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -58,7 +58,14 @@ INSERT INTO `tbl_audit` (`audit_id`, `content`, `date_generated`, `user_id`) VAL
 (17, ' Completed Transaction #TT5C9B9EE55F5B5', '2019-04-01 09:04:34', 3),
 (19, ' Added payment, Amount PHP12912.50 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 09:04:19', 3),
 (20, ' Completed Transaction #MS5C982B016AA1A', '2019-04-01 09:04:26', 3),
-(21, ' Added payment, Amount PHP500 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 09:04:42', 3);
+(21, ' Added payment, Amount PHP500 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 09:04:42', 3),
+(22, 'Administrator has logged in', '2019-04-01 11:04:02', 3),
+(23, ' Added payment, Amount PHP12,412.50 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 11:04:06', 3),
+(24, ' Added payment, Amount PHP12,412.50 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 11:04:56', 3),
+(25, ' Added payment, Amount PHP12400.50 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 11:04:38', 3),
+(26, ' Added payment, Amount PHP12412.50 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 11:04:06', 3),
+(27, 'test has logged in', '2019-04-01 11:04:04', 4),
+(28, ' Completed Transaction #MS5C982B016AA1A', '2019-04-01 11:04:03', 4);
 
 -- --------------------------------------------------------
 
@@ -307,7 +314,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_audit`
 --
 ALTER TABLE `tbl_audit`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tbl_package`
@@ -319,7 +326,7 @@ ALTER TABLE `tbl_package`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment_type`

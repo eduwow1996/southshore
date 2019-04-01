@@ -6,10 +6,10 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="From Date"/>
+                    <input type="text" class="form-control" placeholder="From Date" value="<?php echo $to_date;?>"/>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="To Date"/>
+                    <input type="text" class="form-control" placeholder="To Date" value="<?php echo $current_date;?>"/>
                 </div>
             </div>
             <div class="col-md-12 table-responsive">

@@ -16,6 +16,7 @@
                             <th>Paid Amount</th>
                             <th>Date Paid</th>
                             <th>Balance</th>
+                            <th>Payment Type</th>
                             <th>Tour Date</th>
                             <th>Action</th>
                         </thead>
@@ -27,13 +28,14 @@
                                     <td>P<?php echo $value['total_paid']; ?></td>
                                     <td><?php echo $value['trans_date']; ?></td>
                                     <td>P<?php echo $value['balance']; ?></td>
+                                    <td><?php echo ($value['payment_type'] == 1) ? 'Down Payment' : 'Full Payment'; ?></td>
                                     <td><?php echo $value['tour_date']; ?></td>
                                     <td>
                                         <a href="" class="btn btn-info btn-sm getReservationDetails" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#moreDetails"><i class="fa fa-search"></i> More Details</a>
                                         <?php if($value['balance'] == 0): ?>
                                             <a href="" class="btn btn-warning btn-sm complete_transaction" data-id="<?php echo $value['id']; ?>"><i class="fa fa-check"></i> Completed</a>
                                         <?php endif; ?>
-                                        <a href="" class="btn btn-default btn-sm"><i class="fa fa-ticket"></i> Invoice</a>
+                                        <a href="<?php echo base_url('reservations/invoice/'.$value['id']); ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-ticket"></i> Invoice</a>
                                         <?php if($value['balance'] != 0): ?>
                                             <a href="" class="btn btn-primary btn-sm addPayment" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#addPaymentModal"><i class="fa fa-plus"></i> Add Payment</a>
                                         <?php endif; ?>

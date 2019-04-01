@@ -32,7 +32,12 @@ class Reservations extends MY_Controller {
 	public function add_payment(){
 		$trans_id = $this->input->post('trans_id');
 		$data_row = $this->MY_Model->getRows('tbl_reservation','transaction_id',array('tbl_reservation.id' => $trans_id),'','','','row');
-		$payment_amount = $this->input->post('payment_amount');
+		$payment_amount = 0;
+		if(strpos($this->input->post('payment_amount'),',') !== false){
+			$payment_amount = str_replace(",","",$this->input->post('payment_amount'));
+		} else {
+			$payment_amount = $this->input->post('payment_amount');
+		}
 		$data = array(
 			'reservation_id' => $trans_id,
 			'amount_paid' => $payment_amount,
@@ -48,5 +53,9 @@ class Reservations extends MY_Controller {
 			$this->audit($data_audit);
 			echo 1;
 		}
+	}
+
+	public function invoice($id){
+		$this->load_page('invoice');
 	}
 }

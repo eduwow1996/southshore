@@ -5,16 +5,12 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
-                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#createPackageModal"><i class="fa fa-plus"></i> Create Payment</a>
-                </div>
                 <div class="table-responsive">
                     <table class="table table-stripe">
                         <thead>
                             <th>Transaction ID</th>
                             <th>Guest Name</th>
                             <th>Paid Amount</th>
-                            <th>Balance</th>
                             <th>Tour Date</th>
                             <th>Action</th>
                         </thead>
@@ -23,8 +19,7 @@
                                 <tr>
                                     <td><?php echo $value['transaction_id']; ?></td>
                                     <td><?php echo $value['lead_guest_name']; ?></td>
-                                    <td>P<?php echo $value['total_paid']; ?></td>
-                                    <td>P<?php echo $value['balance']; ?></td>
+                                    <td>P<?php echo $value['total_paid']; ?></td>                                    
                                     <td><?php echo $value['tour_date']; ?></td>
                                     <td>
                                         <a href="" class="btn btn-info btn-sm getReservationDetails" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#moreDetails"><i class="fa fa-search"></i> More Details</a>
