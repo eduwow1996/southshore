@@ -13,6 +13,7 @@
         <script src="<?php echo base_url('static/js/datepicker.min.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/select2.min.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/adminlte.min.js'); ?>"></script>
+        <script src="<?php echo base_url('static/js/jquery-confirm.min.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/ckeditor.js'); ?>"></script>
         <script src="<?php echo base_url('static/js/script.js'); ?>"></script>
         <script>

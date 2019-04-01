@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="<?php echo base_url('static/css/AdminLTE.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('static/css/skin-blue.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('static/css/ckeditor.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('static/css/jquery-confirm.min.css'); ?>">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">

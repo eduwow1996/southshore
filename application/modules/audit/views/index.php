@@ -23,7 +23,7 @@
                         <?php foreach($audit_logs as $key => $value): ?>
                             <tr>
                                 <td><?php echo $value['audit_id']; ?></td>
-                                <td><?php echo $value['content']; ?></td>
+                                <td><?php echo ucwords($value['fullname']).' '.$value['content']; ?></td>
                                 <td><?php echo $value['date_generated']; ?></td>
                             </tr>
                         <?php endforeach; ?>

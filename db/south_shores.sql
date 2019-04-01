@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2019 at 06:10 PM
+-- Generation Time: Apr 01, 2019 at 03:54 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -40,20 +40,25 @@ CREATE TABLE `tbl_audit` (
 --
 
 INSERT INTO `tbl_audit` (`audit_id`, `content`, `date_generated`, `user_id`) VALUES
-(2, 'Administrator has logged in', '2019-03-04 05:03:20', 3),
-(3, 'Administrator has logged in', '2019-03-04 05:03:06', 3),
-(4, 'Administrator has logged in', '2019-03-05 12:03:20', 3),
-(5, 'Administrator has logged in', '2019-03-11 10:03:50', 3),
-(6, 'Administrator has logged in', '2019-03-11 10:03:54', 3),
-(7, 'Administrator added PESCADOR ISLAND-MOALBOAL HOPPING PACKAGE package', '2019-03-11 11:03:56', 3),
+(2, 'has logged in', '2019-03-04 05:03:20', 3),
+(3, 'has logged in', '2019-03-04 05:03:06', 3),
+(4, 'has logged in', '2019-03-05 12:03:20', 3),
+(5, 'has logged in', '2019-03-11 10:03:50', 3),
+(6, 'has logged in', '2019-03-11 10:03:54', 3),
+(7, 'added PESCADOR ISLAND-MOALBOAL HOPPING PACKAGE package', '2019-03-11 11:03:56', 3),
 (8, 'Administrator has logged in', '2019-03-24 12:03:25', 3),
 (9, ' added Test package', '2019-03-24 12:03:01', 3),
-(10, 'Administrator has logged in', '2019-03-24 01:03:49', 3),
+(10, 'has logged in', '2019-03-24 01:03:49', 3),
 (11, ' added Test package', '2019-03-24 02:03:20', 3),
 (12, ' added test package', '2019-03-24 03:03:02', 3),
-(13, 'Administrator has logged in', '2019-03-27 11:03:02', 3),
+(13, 'has logged in', '2019-03-27 11:03:02', 3),
 (14, 'test has logged in', '2019-03-28 12:03:35', 4),
-(15, 'Administrator has logged in', '2019-03-28 01:03:07', 3);
+(15, 'has logged in', '2019-03-28 01:03:07', 3),
+(16, 'has logged in', '2019-04-01 08:04:42', 3),
+(17, ' Completed Transaction #TT5C9B9EE55F5B5', '2019-04-01 09:04:34', 3),
+(19, ' Added payment, Amount PHP12912.50 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 09:04:19', 3),
+(20, ' Completed Transaction #MS5C982B016AA1A', '2019-04-01 09:04:26', 3),
+(21, ' Added payment, Amount PHP500 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 09:04:42', 3);
 
 -- --------------------------------------------------------
 
@@ -92,6 +97,7 @@ CREATE TABLE `tbl_payment` (
   `id` int(11) NOT NULL,
   `reservation_id` int(11) NOT NULL,
   `amount_paid` varchar(100) NOT NULL,
+  `added_by` int(11) DEFAULT '0',
   `date_paid` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -99,10 +105,11 @@ CREATE TABLE `tbl_payment` (
 -- Dumping data for table `tbl_payment`
 --
 
-INSERT INTO `tbl_payment` (`id`, `reservation_id`, `amount_paid`, `date_paid`) VALUES
-(1, 6, '13912.50', '2019/03/27'),
-(2, 6, '1000', '2019/03/27'),
-(6, 7, '10920.00', '2019/03/27');
+INSERT INTO `tbl_payment` (`id`, `reservation_id`, `amount_paid`, `added_by`, `date_paid`) VALUES
+(1, 6, '13912.50', 0, '2019/03/27'),
+(2, 6, '1000', 0, '2019/03/27'),
+(6, 7, '10920.00', 0, '2019/03/27'),
+(9, 6, '500', 3, '2019/04/01');
 
 -- --------------------------------------------------------
 
@@ -155,7 +162,7 @@ CREATE TABLE `tbl_reservation` (
 
 INSERT INTO `tbl_reservation` (`id`, `transaction_id`, `trans_date`, `package_id`, `paid_amount`, `lead_guest_name`, `number_of_people`, `number_of_filipino`, `pickup_address`, `tour_date`, `email_address`, `phone_number`, `special_request`, `payment_type`, `payment_gateway`, `payment_status`, `status`) VALUES
 (6, 'TT5C9B9EE55F5B5', '2019/03/27', 3, '27825', 'test test', 10, 0, 'test', '03/28/2019', 'test@gmail.com', '0999', 'test test test', 1, 'paypal', 0, 0),
-(7, 'MS5C982B016AA1A', '2019-03-27', 4, '10920.00', 'Mary Stone', 2, 0, 'J Park Island Resort and Waterpark', '03/29/2019', 'mcstone414@hotmail.com', '2515450707', '-', 2, 'paypal', 0, 0);
+(7, 'MS5C982B016AA1A', '2019-03-27', 4, '10920.00', 'Mary Stone', 2, 0, 'J Park Island Resort and Waterpark', '03/29/2019', 'mcstone414@hotmail.com', '2515450707', '-', 2, 'paypal', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -300,7 +307,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_audit`
 --
 ALTER TABLE `tbl_audit`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_package`
@@ -312,7 +319,7 @@ ALTER TABLE `tbl_package`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment_type`

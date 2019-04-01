@@ -14,6 +14,7 @@
                             <th>Transaction ID</th>
                             <th>Guest Name</th>
                             <th>Paid Amount</th>
+                            <th>Date Paid</th>
                             <th>Balance</th>
                             <th>Tour Date</th>
                             <th>Action</th>
@@ -24,14 +25,17 @@
                                     <td><?php echo $value['transaction_id']; ?></td>
                                     <td><?php echo $value['lead_guest_name']; ?></td>
                                     <td>P<?php echo $value['total_paid']; ?></td>
+                                    <td><?php echo $value['trans_date']; ?></td>
                                     <td>P<?php echo $value['balance']; ?></td>
                                     <td><?php echo $value['tour_date']; ?></td>
                                     <td>
                                         <a href="" class="btn btn-info btn-sm getReservationDetails" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#moreDetails"><i class="fa fa-search"></i> More Details</a>
-                                        <a href="" class="btn btn-warning btn-sm"><i class="fa fa-check"></i> Completed</a>
+                                        <?php if($value['balance'] == 0): ?>
+                                            <a href="" class="btn btn-warning btn-sm complete_transaction" data-id="<?php echo $value['id']; ?>"><i class="fa fa-check"></i> Completed</a>
+                                        <?php endif; ?>
                                         <a href="" class="btn btn-default btn-sm"><i class="fa fa-ticket"></i> Invoice</a>
                                         <?php if($value['balance'] != 0): ?>
-                                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Payment</a>
+                                            <a href="" class="btn btn-primary btn-sm addPayment" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#addPaymentModal"><i class="fa fa-plus"></i> Add Payment</a>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -85,10 +89,52 @@
                         </table>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Payment Details</label>
+                        <table class="table" id="payment_list">
+                            <thead>
+                                <th>Payment Amount</th>
+                                <th>Date Paid</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addPaymentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="add_payment_form" action="<?php echo base_url('reservations/add_payment'); ?>" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Payment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Transaction #<span class="trans_number"></span></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Payment Amount</label>
+                            <input type="text" class="form-control" name="payment_amount" placeholder="Payment Amount"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    <button type="submit" class="btn btn-success" ><i class="fa fa-plus"></i> Add Payment</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

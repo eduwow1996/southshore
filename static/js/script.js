@@ -16,6 +16,67 @@ $(document).ready(function(){
         }
         $('.number_of_person_list').html(str);
     });
+    $(document).on('click','.complete_transaction',function(e){
+        e.preventDefault();
+        var trans_id = $(this).attr('data-id');
+        $.confirm({
+            title: 'Confirm Transaction',
+            content: 'Click "Confirm" to complete this transaction',
+            type: 'green',
+            typeAnimated: true,
+            buttons: {
+                tryAgain: {
+                    text: 'Confirm',
+                    btnClass: 'btn-green',
+                    action: function(){
+                        $.ajax({
+                            url:base_url+"reservations/complete_transaction",
+                            type:'post',
+                            data:{
+                                'id':trans_id
+                            },success:function(data){
+                                if(data == '1'){
+                                    window.location.href=base_url+"reservations";
+                                }
+                            }
+                        });
+                    }
+                },
+                close: function () {
+                }
+            }
+        });
+    });
+    var reservation_id = null;
+    var amount_balance = 0;
+    $(document).on('click','.addPayment',function(){
+        reservation_id = $(this).attr('data-id');
+        $.ajax({
+            url:base_url+"reservations/get_reservation_details",
+            type:"post",
+            data:{
+                'id':reservation_id
+            },success:function(data){
+                var obj = $.parseJSON(data);
+                $('.trans_number').text(obj.details.transaction_id);
+            }
+        });
+    });
+    $(document).on('submit','#add_payment_form',function(e){
+        e.preventDefault();
+        var formData = new FormData($(this)[0]);
+        formData.append('trans_id',reservation_id);
+        $.ajax({
+            url: $(this).attr('action'),
+            data: formData,
+            type: $(this).attr('method'),
+            contentType: false,
+            processData: false,
+            success:function(data){
+                window.location.href=base_url+"reservations";
+            }
+        });
+    });
     $(document).on('submit','#package_form',function(e){
         e.preventDefault();
         var formData = new FormData($(this)[0]);
@@ -81,13 +142,21 @@ $(document).ready(function(){
                 'id':id
             },success:function(data){
                 var obj = $.parseJSON(data);
-                $('.package_text_display').text(obj.package_name);
-                $('.number_of_people_text_display').text(obj.number_of_people);
-                $('.number_of_filipino_text_display').text(obj.number_of_filipino);
-                $('.pickup_address_text_display').text(obj.pickup_address);
-                $('.email_text_display').text(obj.email_address);
-                $('.phone_number_text_display').text(obj.phone_number);
-                $('.special_request_text_display').text(obj.special_request);
+                $('.package_text_display').text(obj.details.package_name);
+                $('.number_of_people_text_display').text(obj.details.number_of_people);
+                $('.number_of_filipino_text_display').text(obj.details.number_of_filipino);
+                $('.pickup_address_text_display').text(obj.details.pickup_address);
+                $('.email_text_display').text(obj.details.email_address);
+                $('.phone_number_text_display').text(obj.details.phone_number);
+                $('.special_request_text_display').text(obj.details.special_request);
+                var str = '';
+                $.each(obj.payment_list,function(a,b){
+                    str += '<tr>';
+                        str += '<td>PHP'+b.amount_paid+'</td>';
+                        str += '<td>'+b.date_paid+'</td>';
+                    str += '</tr>';
+                });
+                $('#payment_list tbody').html(str);
             }
         });
     });
