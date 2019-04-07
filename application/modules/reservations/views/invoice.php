@@ -140,4 +140,7 @@
         <div style="font-weight:bold;">ITINERARY:</div>
         <div><?php echo $details->package_intinerary; ?></div>
     <div>
+    <div style="width:100%;position:block;text-align:left;font-size:12px;margin-top:20px;">
+        <div>Served by:<?php echo $details->fullname; ?></div>        
+    <div>
 </div>

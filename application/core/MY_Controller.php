@@ -16,11 +16,13 @@ class MY_Controller extends MX_Controller {
 		if($this->session->userdata('user_type') == 1){
 			$get_data = $this->MY_Model->getRows('tbl_users','*',array('user_id' => $this->session->userdata('user_id')),array('tbl_sites' => 'tbl_sites.site_id = tbl_users.site_id'),'','','row');
 			$data['site_name'] = $get_data->site_name;
+			$data['reservations_count'] = $this->MY_Model->getRows('tbl_reservation','*',array('status' => 0,'site' => $get_data->site_id),'','','','count');
+			$data['reservations_logs_count'] = $this->MY_Model->getRows('tbl_reservation','*',array('status' => 1,'site' => $get_data->site_id),'','','','count');
 		} else {
 			$data['site_name'] = 'Admin';
+			$data['reservations_count'] = $this->MY_Model->getRows('tbl_reservation','*',array('status' => 0),'','','','count');
+			$data['reservations_logs_count'] = $this->MY_Model->getRows('tbl_reservation','*',array('status' => 1),'','','','count');
 		}
-		$data['reservations_count'] = $this->MY_Model->getRows('tbl_reservation','*',array('status' => 0),'','','','count');
-		$data['reservations_logs_count'] = $this->MY_Model->getRows('tbl_reservation','*',array('status' => 1),'','','','count');
 		$this->load->view('head',$data);
 		$this->load->view($page,$data);
 		$this->load->view('footer',$data);
