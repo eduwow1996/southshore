@@ -23,7 +23,7 @@
                                     <td><?php echo $value['tour_date']; ?></td>
                                     <td>
                                         <a href="" class="btn btn-info btn-sm getReservationDetails" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#moreDetails"><i class="fa fa-search"></i> More Details</a>
-                                        <a href="" class="btn btn-default btn-sm"><i class="fa fa-ticket"></i> Invoice</a>
+                                        <a href="<?php echo base_url('reservationslogs/invoice/'.$value['id']);?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-ticket"></i> Invoice</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

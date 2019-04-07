@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#createPackageModal"><i class="fa fa-plus"></i> Create Payment</a>
+                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#createPaymentModal"><i class="fa fa-plus"></i> Create Payment</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-stripe">
@@ -130,6 +130,140 @@
                         <div class="col-md-12">
                             <label>Payment Amount</label>
                             <input type="text" class="form-control" name="payment_amount" placeholder="Payment Amount"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    <button type="submit" class="btn btn-success" ><i class="fa fa-plus"></i> Add Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="createPaymentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="create_new_payment_form" action="<?php echo base_url('reservations/create_new_payment'); ?>" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Create Payment</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Transaction ID</label>
+                                <input type="text" class="form-control" name="transaction_id" placeholder="Transaction ID"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Package</label>
+                            <div class="form-group">
+                                <select class="form-control" name="package">
+                                    <option selected hidden>Select Package</option>
+                                    <?php foreach($packages as $key => $value): ?>
+                                        <option value="<?php echo $value['package_id']; ?>"><?php echo $value['package_name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Payment Amount</label>
+                                <input type="text" class="form-control" name="payment_amount" placeholder="Payment Amount"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Paid Amount</label>
+                                <input type="text" class="form-control" name="paid_amount" placeholder="Paid Amount"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Total Number of People</label>
+                                <input type="text" class="form-control" name="total_number_of_people" placeholder="Total Number of People"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Payment Type</label>
+                            <div class="form-group">
+                                <select class="form-control" name="payment_type">
+                                    <option selected hidden>Select Payment Type</option>
+                                    <?php foreach($payment_type as $key => $value): ?>
+                                        <option value="<?php echo $value['payment_type']; ?>"><?php echo $value['payment_type']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Payment</label>
+                            <div class="form-group">
+                                <select class="form-control" name="payment_description">
+                                    <option selected hidden>Select Payment</option>
+                                    <option value="1">Downpayment</option>
+                                    <option value="2">Full Payment</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" name="first_name" placeholder="First Name"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" name="last_name" placeholder="Last Name"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Hotel or Pick up address</label>
+                                <input type="text" class="form-control" name="pickup_address" placeholder="Hotel or Pick up address"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Tour Date</label>
+                                <input type="text" class="form-control tour_date" name="tour_date" placeholder="Tour Date"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Email"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" class="form-control" name="phone_number" placeholder="Phone Number"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Special Request</label>
+                                <textarea class="form-control" name="special_request" rows="5" style="resize:none;"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>

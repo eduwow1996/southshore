@@ -76,6 +76,7 @@
                         <li <?php echo ($current == 'reservations') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservations'); ?>"><i class="fa fa-calendar"></i> <span>Reservations</span><span class="pull-right-container"><small class="label pull-right bg-red"><?php echo $reservations_count; ?></small></span></a></li>
                         <li <?php echo ($current == 'reservationslogs') ? 'class="active"' : ''?>><a href="<?php echo base_url('reservationslogs'); ?>"><i class="fa fa-book"></i> <span>Reservations Logs</span><span class="pull-right-container"><small class="label pull-right bg-green"><?php echo $reservations_logs_count; ?></small></span></a></li>
                         <?php if($this->session->userdata('user_type') == 0): ?>
+                            <li <?php echo ($current == 'report') ? 'class="active"' : ''?>><a href="<?php echo base_url('report'); ?>"><i class="fa fa-line-chart"></i> <span>Sales Report</span></a></li>
                             <li <?php echo ($current == 'audit') ? 'class="active"' : ''?>><a href="<?php echo base_url('audit'); ?>"><i class="fa fa-search"></i> <span>Log Audit</span></a></li>
                         <?php endif; ?>
                     </ul>

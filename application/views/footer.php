@@ -24,6 +24,15 @@
                 startDate: new Date(),
                 format:'yyyy-mm-dd'
             });
+            $('.tour_date').datepicker({
+                autoclose: true,
+                startDate: new Date(),
+                format:'mm/dd/yyyy'
+            });
+            $('.audit_date').datepicker({
+                autoclose: true,                
+                format:'yyyy-mm-dd'
+            });
         </script>
     </body>
 </html>

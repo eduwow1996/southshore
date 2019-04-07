@@ -14,7 +14,7 @@
                             <th>Package Name</th>
                             <th>Status</th>
                             <th>Added By</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                             <th>Edit Price</th>
                         </thead>
                         <tbody>
@@ -23,12 +23,12 @@
                                     <td><?php echo $value['package_name']; ?></td>
                                     <td><?php echo ($value['status'] == 1) ? 'Active' : 'Inactive'; ?></td>
                                     <td><?php echo $value['fullname']; ?></td>
-                                    <td>
+                                    <!-- <td>
                                         <div class="btn-group">
                                             <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                             <a href="" class="btn btn-danger btn-sm"><i class="fa fa-lock"></i></a>
                                         </div>
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <div class="btn-group">
                                             <a href="" class="btn btn-warning btn-sm editPackagePrice" data-id="<?php echo $value['package_id']; ?>" data-toggle="modal" data-target="#editPackagePriceModal"><i class="fa fa-edit"></i></a>

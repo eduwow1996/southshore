@@ -5,12 +5,17 @@
     <div class="box-body">
         <div class="row">
             <div class="form-group">
-                <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="From Date" value="<?php echo $to_date;?>"/>
-                </div>
-                <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="To Date" value="<?php echo $current_date;?>"/>
-                </div>
+                <form method="post" action="<?php echo base_url('audit/search_date'); ?>">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control audit_date" name="from_date" placeholder="From Date" value="<?php echo $to_date;?>"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control audit_date" name="to_date" placeholder="To Date" value="<?php echo $current_date;?>"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="submit" class="btn btn-sm btn-primary" value="Go"/>
+                    </div>
+                </form>
             </div>
             <div class="col-md-12 table-responsive">
                 <table class="table">

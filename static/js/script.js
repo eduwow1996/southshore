@@ -16,6 +16,17 @@ $(document).ready(function(){
         }
         $('.number_of_person_list').html(str);
     });
+    $(document).on('change','select[name="report_type"]',function(){
+        var report_type = $(this).val();
+        if(report_type == '1'){
+            $('#date_range').show();
+            $('#monthly').hide();
+        } else {
+            $('#date_range').hide();
+            $('#monthly').show();
+        }
+        $('#generate_button').show();
+    });
     $(document).on('click','.complete_transaction',function(e){
         e.preventDefault();
         var trans_id = $(this).attr('data-id');
@@ -63,6 +74,21 @@ $(document).ready(function(){
         });
     });
     $(document).on('submit','#add_payment_form',function(e){
+        e.preventDefault();
+        var formData = new FormData($(this)[0]);
+        formData.append('trans_id',reservation_id);
+        $.ajax({
+            url: $(this).attr('action'),
+            data: formData,
+            type: $(this).attr('method'),
+            contentType: false,
+            processData: false,
+            success:function(data){
+                window.location.href=base_url+"reservations";
+            }
+        });
+    });
+    $(document).on('submit','#create_new_payment_form',function(e){
         e.preventDefault();
         var formData = new FormData($(this)[0]);
         formData.append('trans_id',reservation_id);

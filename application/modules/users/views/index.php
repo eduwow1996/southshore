@@ -22,8 +22,7 @@
                                 <td><?php echo $value['site_name']; ?></td>
                                 <td><?php echo ($value['user_status'] == 1) ? 'Active' : 'Inactive'; ?></td>
                                 <td>
-                                    <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                    <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                    <a href="" class="btn btn-danger btn-sm"><i class="fa fa-lock"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

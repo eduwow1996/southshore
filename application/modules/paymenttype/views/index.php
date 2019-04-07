@@ -12,16 +12,11 @@
                     <table class="table table-stripe">
                         <thead>
                             <th>Payment Type</th>
-                            <th>Action</th>
                         </thead>
                         <tbody>
                             <?php foreach($payment_type  as $key => $value): ?>
                                 <tr>
                                     <td><?php echo $value['payment_type']; ?></td>
-                                    <td>
-                                        <a href="" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#moreDetails"><i class="fa fa-edit"></i></a>
-                                        <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2019 at 12:39 PM
+-- Generation Time: Apr 07, 2019 at 03:47 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -71,7 +71,13 @@ INSERT INTO `tbl_audit` (`audit_id`, `content`, `date_generated`, `user_id`) VAL
 (31, 'test has logged in', '2019-04-07 06:04:16', 7),
 (32, 'Administrator has logged in', '2019-04-07 06:04:13', 3),
 (33, 'test1 has logged in', '2019-04-07 06:04:42', 8),
-(34, 'Administrator has logged in', '2019-04-07 06:04:54', 3);
+(34, 'Administrator has logged in', '2019-04-07 06:04:54', 3),
+(35, 'test has logged in', '2019-04-07 06:04:43', 7),
+(36, 'test1 has logged in', '2019-04-07 06:04:22', 8),
+(37, 'test has logged in', '2019-04-07 06:04:08', 7),
+(38, 'Administrator has logged in', '2019-04-07 06:04:17', 3),
+(39, 'Administrator has logged in', '2019-04-07 07:04:03', 3),
+(40, 'Administrator has logged in', '2019-04-07 07:04:36', 3);
 
 -- --------------------------------------------------------
 
@@ -122,7 +128,9 @@ INSERT INTO `tbl_payment` (`id`, `reservation_id`, `amount_paid`, `added_by`, `d
 (1, 6, '13912.50', 0, '2019/03/27'),
 (2, 6, '1000', 0, '2019/03/27'),
 (6, 7, '10920.00', 0, '2019/03/27'),
-(9, 6, '500', 3, '2019/04/01');
+(9, 6, '500', 3, '2019/04/01'),
+(14, 8, '13912.50', 0, '2019/04/07'),
+(16, 10, '10000', 0, '2019/04/07');
 
 -- --------------------------------------------------------
 
@@ -166,6 +174,7 @@ CREATE TABLE `tbl_reservation` (
   `payment_type` int(11) NOT NULL,
   `payment_gateway` varchar(255) NOT NULL,
   `payment_status` int(11) DEFAULT '0',
+  `site` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -173,9 +182,11 @@ CREATE TABLE `tbl_reservation` (
 -- Dumping data for table `tbl_reservation`
 --
 
-INSERT INTO `tbl_reservation` (`id`, `transaction_id`, `trans_date`, `package_id`, `paid_amount`, `lead_guest_name`, `number_of_people`, `number_of_filipino`, `pickup_address`, `tour_date`, `email_address`, `phone_number`, `special_request`, `payment_type`, `payment_gateway`, `payment_status`, `status`) VALUES
-(6, 'TT5C9B9EE55F5B5', '2019/03/27', 3, '27825', 'test test', 10, 0, 'test', '03/28/2019', 'test@gmail.com', '0999', 'test test test', 1, 'paypal', 0, 0),
-(7, 'MS5C982B016AA1A', '2019-03-27', 4, '10920.00', 'Mary Stone', 2, 0, 'J Park Island Resort and Waterpark', '03/29/2019', 'mcstone414@hotmail.com', '2515450707', '-', 2, 'paypal', 0, 1);
+INSERT INTO `tbl_reservation` (`id`, `transaction_id`, `trans_date`, `package_id`, `paid_amount`, `lead_guest_name`, `number_of_people`, `number_of_filipino`, `pickup_address`, `tour_date`, `email_address`, `phone_number`, `special_request`, `payment_type`, `payment_gateway`, `payment_status`, `site`, `status`) VALUES
+(6, 'TT5C9B9EE55F5B5', '2019/03/27', 3, '27825', 'test test', 10, 0, 'test', '03/28/2019', 'test@gmail.com', '0999', 'test test test', 1, 'paypal', 0, 1, 0),
+(7, 'MS5C982B016AA1A', '2019/03/27', 4, '10920.00', 'Mary Stone', 2, 0, 'J Park Island Resort and Waterpark', '03/29/2019', 'mcstone414@hotmail.com', '2515450707', '-', 2, 'paypal', 0, 1, 1),
+(8, 'TT5CA9E2AF03D41', '2019/04/07', 3, '27825', 'test test', 10, 0, 'test', '04/07/2019', 'test@gmail.com', '0933', 'test', 1, 'paypal', 0, 1, 0),
+(10, '21321312', '2019/04/07', 3, '20000', 'test test', 10, 0, 'test', '04/09/2019', 'test@gmail.com', '04342432', 'yrdy', 1, 'BDO', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -348,7 +359,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_audit`
 --
 ALTER TABLE `tbl_audit`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `tbl_package`
@@ -360,7 +371,7 @@ ALTER TABLE `tbl_package`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment_type`
@@ -372,7 +383,7 @@ ALTER TABLE `tbl_payment_type`
 -- AUTO_INCREMENT for table `tbl_reservation`
 --
 ALTER TABLE `tbl_reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_sites`
