@@ -21,7 +21,7 @@
             <header class="main-header">
                 <a href="<?php echo base_url(); ?>" class="logo">
                     <span class="logo-mini">SSC</span>
-                    <span class="logo-lg">South Shore</span>
+                    <span class="logo-lg"><?php echo $site_name; ?></span>
                 </a>
                 <nav class="navbar navbar-static-top" role="navigation">
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -68,6 +68,7 @@
                         <li class="header">MAIN HEADER</li>
                         <li <?php echo ($current == 'dashboard') ? 'class="active"' : ''?>><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                         <?php if($this->session->userdata('user_type') == 0): ?>
+                            <li <?php echo ($current == 'sites') ? 'class="active"' : ''?>><a href="<?php echo base_url('sites'); ?>"><i class="fa fa-globe"></i> <span>Sites</span></a></li>
                             <li <?php echo ($current == 'users') ? 'class="active"' : ''?>><a href="<?php echo base_url('users'); ?>"><i class="fa fa-users"></i> <span>Users</span></a></li>
                             <li <?php echo ($current == 'packages') ? 'class="active"' : ''?>><a href="<?php echo base_url('packages'); ?>"><i class="fa fa-cubes"></i> <span>Packages</span></a></li>
                             <li <?php echo ($current == 'paymenttype') ? 'class="active"' : ''?>><a href="<?php echo base_url('paymenttype'); ?>"><i class="fa fa-credit-card"></i> <span>Payment Type</span></a></li>

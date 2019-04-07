@@ -1,26 +1,24 @@
 <div class="box box-primary color-palette-box">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-users"></i> Users</h3>
+        <h3 class="box-title"><i class="fa fa-users"></i> Sites</h3>
     </div>
     <div class="box-body">
         <div class="row">
             <div class="col-md-12 table-responsive">
                 <div class="form-group">
-                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#createUserModal"><i class="fa fa-plus"></i> Create User</a>
+                    <a href="" class="btn btn-success" data-toggle="modal" data-target="#createUserModal"><i class="fa fa-plus"></i> Create Site</a>
                 </div>
                 <table class="table">
                     <thead>
-                        <th>Name</th>
-                        <th>Site Handled</th>
-                        <th>Status</th>
+                        <th>Site</th>
+                        <th>Site Url</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        <?php foreach($users as $key => $value): ?>
+                        <?php foreach($sites as $key => $value): ?>
                             <tr>
-                                <td><?php echo ucwords($value['fullname']); ?></td>
                                 <td><?php echo $value['site_name']; ?></td>
-                                <td><?php echo ($value['user_status'] == 1) ? 'Active' : 'Inactive'; ?></td>
+                                <td><?php echo $value['site_url']; ?></td>
                                 <td>
                                     <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                     <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
@@ -36,7 +34,7 @@
 <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form id="create_user_form" action="<?php echo base_url('users/create_users'); ?>" method="post">
+            <form id="create_site_form" action="<?php echo base_url('sites/create_sites'); ?>" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Create User</h4>
@@ -45,37 +43,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Full Name: </label>
-                                <input type="text" class="form-control" name="fullname" placeholder="Full Name"/>
+                                <label>Site Name: </label>
+                                <input type="text" class="form-control" name="site_name" placeholder="Site Name"/>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Site: </label>
-                                <select class="form-control" name="site">
-                                    <option selected hidden>Select Site</option>
-                                    <?php foreach($sites as $key => $value): ?>
-                                        <option value="<?php echo $value['site_id']; ?>"><?php echo $value['site_name']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Username: </label>
-                                <input type="text" class="form-control" name="username" placeholder="Username"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Password: </label>
-                                <input type="password" class="form-control" name="password" placeholder="Password"/>
+                                <label>Site Url: </label>
+                                <input type="text" class="form-control" name="site_url" placeholder="Site Url"/>
                             </div>
                         </div>
                     </div>

@@ -105,6 +105,20 @@ $(document).ready(function(){
             }
         });
     });
+    $(document).on('submit','#create_site_form',function(e){
+        e.preventDefault();
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: $(this).attr('action'),
+            data: formData,
+            type: $(this).attr('method'),
+            contentType: false,
+            processData: false,
+            success:function(data){
+                window.location.href=base_url+"sites";
+            }
+        });
+    });
     $(document).on('submit','#create_payment_type_form',function(e){
         e.preventDefault();
         var formData = new FormData($(this)[0]);

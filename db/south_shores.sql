@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2019 at 05:49 PM
+-- Generation Time: Apr 07, 2019 at 12:39 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -65,7 +65,13 @@ INSERT INTO `tbl_audit` (`audit_id`, `content`, `date_generated`, `user_id`) VAL
 (25, ' Added payment, Amount PHP12400.50 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 11:04:38', 3),
 (26, ' Added payment, Amount PHP12412.50 on Transaction #TT5C9B9EE55F5B5', '2019-04-01 11:04:06', 3),
 (27, 'test has logged in', '2019-04-01 11:04:04', 4),
-(28, ' Completed Transaction #MS5C982B016AA1A', '2019-04-01 11:04:03', 4);
+(28, ' Completed Transaction #MS5C982B016AA1A', '2019-04-01 11:04:03', 4),
+(29, 'Administrator has logged in', '2019-04-07 03:04:45', 3),
+(30, 'test has logged in', '2019-04-07 06:04:33', 7),
+(31, 'test has logged in', '2019-04-07 06:04:16', 7),
+(32, 'Administrator has logged in', '2019-04-07 06:04:13', 3),
+(33, 'test1 has logged in', '2019-04-07 06:04:42', 8),
+(34, 'Administrator has logged in', '2019-04-07 06:04:54', 3);
 
 -- --------------------------------------------------------
 
@@ -174,6 +180,26 @@ INSERT INTO `tbl_reservation` (`id`, `transaction_id`, `trans_date`, `package_id
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_sites`
+--
+
+CREATE TABLE `tbl_sites` (
+  `site_id` int(11) NOT NULL,
+  `site_name` varchar(255) NOT NULL,
+  `site_url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_sites`
+--
+
+INSERT INTO `tbl_sites` (`site_id`, `site_name`, `site_url`) VALUES
+(1, 'South Shore', 'southshoretours.com'),
+(4, 'Affordable', 'afforadble.php');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_sub_package`
 --
 
@@ -248,6 +274,7 @@ CREATE TABLE `tbl_users` (
   `username` varchar(255) NOT NULL,
   `fullname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `site_id` int(11) NOT NULL,
   `user_type` int(11) NOT NULL,
   `user_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -256,9 +283,10 @@ CREATE TABLE `tbl_users` (
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`user_id`, `username`, `fullname`, `password`, `user_type`, `user_status`) VALUES
-(3, 'administrator', 'Administrator', '$2y$10$RmKQPxNkuCeFxUtStOCsjuiPHXelMfiufrHjpwzxG82DeXOpVmlh2', 0, 1),
-(4, 'test', 'test', '$2y$10$IncoRZSwkL7aWeSdtWIULOn637Us1OXgnE0NMHCOrrymfjILO7ZPi', 1, 1);
+INSERT INTO `tbl_users` (`user_id`, `username`, `fullname`, `password`, `site_id`, `user_type`, `user_status`) VALUES
+(3, 'administrator', 'Administrator', '$2y$10$RmKQPxNkuCeFxUtStOCsjuiPHXelMfiufrHjpwzxG82DeXOpVmlh2', 0, 0, 1),
+(7, 'test', 'test', '$2y$10$QeUNwtgWEa8mY0tD3KyGdetr2y0QmOfLHljkPGpCZLkr5uG2TXmN2', 1, 1, 1),
+(8, 'test1', 'test1', '$2y$10$YjxEHh.xDAnfqadWEJ.XVO9yBT5qSZWI9RNiiB2VVnwJzLdt3OvyW', 4, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -295,6 +323,12 @@ ALTER TABLE `tbl_reservation`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_sites`
+--
+ALTER TABLE `tbl_sites`
+  ADD PRIMARY KEY (`site_id`);
+
+--
 -- Indexes for table `tbl_sub_package`
 --
 ALTER TABLE `tbl_sub_package`
@@ -314,7 +348,7 @@ ALTER TABLE `tbl_users`
 -- AUTO_INCREMENT for table `tbl_audit`
 --
 ALTER TABLE `tbl_audit`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tbl_package`
@@ -341,6 +375,12 @@ ALTER TABLE `tbl_reservation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `tbl_sites`
+--
+ALTER TABLE `tbl_sites`
+  MODIFY `site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `tbl_sub_package`
 --
 ALTER TABLE `tbl_sub_package`
@@ -350,7 +390,7 @@ ALTER TABLE `tbl_sub_package`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

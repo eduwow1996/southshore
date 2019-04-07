@@ -56,16 +56,22 @@ class Reservations extends MY_Controller {
 	}
 
 	public function invoice($id){
+		$get_data = $this->MY_Model->getRows('tbl_reservation','tbl_reservation.lead_guest_name,tbl_reservation.transaction_id',array('tbl_reservation.id' => $id),array('tbl_package' => 'tbl_package.package_id = tbl_reservation.package_id'),'','','row');
+		$data['details'] = $this->MY_Model->getRows('tbl_reservation','tbl_reservation.*,tbl_package.*',array('tbl_reservation.id' => $id),array('tbl_package' => 'tbl_package.package_id = tbl_reservation.package_id'),'','','row');
+		$data['payment_list'] = $this->MY_Model->getRows('tbl_payment','sum(amount_paid) as total_paid',array('tbl_payment.reservation_id' => $id),'','','','row');
 		$this->load->library('Pdf');
-		$html = $this->load->view('invoice','',true);
+		$html = $this->load->view('invoice',$data,true);
 		$pdf = new Pdf();
-		$this->pdf->render_pdf($html,'test','','A4');
+		$this->pdf->render_pdf($html,ucwords($get_data->lead_guest_name).' '.$get_data->transaction_id,'','A4');
 	}
 
 	public function downloadinvoice($id){
+		$get_data = $this->MY_Model->getRows('tbl_reservation','tbl_reservation.lead_guest_name,tbl_reservation.transaction_id',array('tbl_reservation.id' => $id),array('tbl_package' => 'tbl_package.package_id = tbl_reservation.package_id'),'','','row');
+		$data['details'] = $this->MY_Model->getRows('tbl_reservation','tbl_reservation.*,tbl_package.*',array('tbl_reservation.id' => $id),array('tbl_package' => 'tbl_package.package_id = tbl_reservation.package_id'),'','','row');
+		$data['payment_list'] = $this->MY_Model->getRows('tbl_payment','sum(amount_paid) as total_paid',array('tbl_payment.reservation_id' => $id),'','','','row');
 		$this->load->library('Pdf');
-		$html = $this->load->view('invoice','',true);
+		$html = $this->load->view('invoice',$data,true);
 		$pdf = new Pdf();
-		$this->pdf->render_pdf($html,'test');
+		$this->pdf->render_pdf($html,ucwords($get_data->lead_guest_name).' '.$get_data->transaction_id,true,'A4');
 	}
 }
