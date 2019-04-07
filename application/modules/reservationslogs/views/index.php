@@ -19,7 +19,7 @@
                                 <tr>
                                     <td><?php echo $value['transaction_id']; ?></td>
                                     <td><?php echo $value['lead_guest_name']; ?></td>
-                                    <td>P<?php echo $value['total_paid']; ?></td>                                    
+                                    <td>P<?php echo $value['total_paid']; ?></td>
                                     <td><?php echo $value['tour_date']; ?></td>
                                     <td>
                                         <a href="" class="btn btn-info btn-sm getReservationDetails" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#moreDetails"><i class="fa fa-search"></i> More Details</a>
@@ -73,6 +73,19 @@
                                 <td>Special Request:</td>
                                 <td class="special_request_text_display"></td>
                             </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Payment Details</label>
+                        <table class="table" id="payment_list">
+                            <thead>
+                                <th>Payment Amount</th>
+                                <th>Date Paid</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
                         </table>
                     </div>
                 </div>

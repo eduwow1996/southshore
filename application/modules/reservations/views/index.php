@@ -36,6 +36,7 @@
                                             <a href="" class="btn btn-warning btn-sm complete_transaction" data-id="<?php echo $value['id']; ?>"><i class="fa fa-check"></i> Completed</a>
                                         <?php endif; ?>
                                         <a href="<?php echo base_url('reservations/invoice/'.$value['id']); ?>" target="_blank" class="btn btn-default btn-sm"><i class="fa fa-ticket"></i> Invoice</a>
+                                        <a href="<?php echo base_url('reservations/downloadinvoice/'.$value['id']); ?>" class="btn btn-default btn-sm"><i class="fa fa-download"></i> Download Invoice</a>
                                         <?php if($value['balance'] != 0): ?>
                                             <a href="" class="btn btn-primary btn-sm addPayment" data-id="<?php echo $value['id']; ?>" data-toggle="modal" data-target="#addPaymentModal"><i class="fa fa-plus"></i> Add Payment</a>
                                         <?php endif; ?>

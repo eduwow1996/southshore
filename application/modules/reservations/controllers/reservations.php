@@ -56,6 +56,16 @@ class Reservations extends MY_Controller {
 	}
 
 	public function invoice($id){
-		$this->load_page('invoice');
+		$this->load->library('Pdf');
+		$html = $this->load->view('invoice','',true);
+		$pdf = new Pdf();
+		$this->pdf->render_pdf($html,'test','','A4');
+	}
+
+	public function downloadinvoice($id){
+		$this->load->library('Pdf');
+		$html = $this->load->view('invoice','',true);
+		$pdf = new Pdf();
+		$this->pdf->render_pdf($html,'test');
 	}
 }
